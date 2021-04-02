@@ -1,7 +1,7 @@
 import XCTest
 
-import AlignedTests
+import AlignTests
 
 var tests = [XCTestCaseEntry]()
-tests += AlignedTests.allTests()
+tests += AlignTests.allTests()
 XCTMain(tests)
