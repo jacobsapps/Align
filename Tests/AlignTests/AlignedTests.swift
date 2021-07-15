@@ -5,7 +5,7 @@ import SwiftUI
 final class AlignTests: XCTestCase {
 
     func testLeft() {
-        XCTAssertNotNil(text.align(.left))
+        XCTAssertNotNil(text.align(.leading))
     }
 
     func testCenterX() {
@@ -13,7 +13,7 @@ final class AlignTests: XCTestCase {
     }
 
     func testRight() {
-        XCTAssertNotNil(text.align(.right))
+        XCTAssertNotNil(text.align(.trailing))
     }
 
     func testTop() {

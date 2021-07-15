@@ -2,28 +2,27 @@
 
 Align gives you an easy way to align views in SwiftUI. 
 
-Simply `import Align` in whichever SwiftUI view you like and you're good to go. Align supplies the simple `align` ViewModifier which you can add to any view.
+Simply `import Align` in whichever SwiftUI file you like and you're good to go. Align supplies the simple `align` ViewModifier which you can add to any view.
 
+To put your view on the leading edge, it's as simple as:
+```
+Text("Hello, world!").align(.leading)
+```
 
-To put your view on the left, it's as simple as:
+There are 6 different alignments provided by the `ViewAlignment` enum:
 ```
-Text("Hello, world!").align(.left)
-```
-
-There are 6 different alignments provided by my `ViewAlignment` enum:
-```
-left
+leading
 centerX
-right
+trailing
 top
 centerY
 bottom
 ```
 
-The way it works is by creating spacers in a VStack / HStack around your view to position it how you like.
+The implementation is quite simple - the `.align()` modifier applies a frame modifier with max width/height set to infinity (taking up all available space) and alignment set as part of this frame modifier.
 
-This library is pretty simple at just one source file - check out `Sources/Align/Align.swift` for the code and SwiftUI previews for each alignment. 
+Check out `Sources/Align/Align.swift` for the source code and to see SwiftUI previews for each alignment. 
 
-I would honestly recommend just copying the source code directly your own project to avoid littering your code with `import Align`. If you do, I'd really appreciate a star on Github!  
+My recommendation would be to just copy the source code directly into own project to avoid littering your code with `import Align`. If you do, I'd really appreciate a star on Github!  
 
 Pull requests and constructive criticism welcome.

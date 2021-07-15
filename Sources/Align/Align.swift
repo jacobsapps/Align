@@ -1,66 +1,47 @@
 import SwiftUI
 
 public enum ViewAlignment {
-    case left
+    case leading
     case centerX
-    case right
+    case trailing
     case top
     case centerY
     case bottom
 }
 
 public extension View {
-    
-    /// This modifier allows you to horizontally and vertically align views by adding spacers around it.
+
+    /// The `align` modifier allows you to horizontally and vertically align views using a simple syntax
     ///
     func align(_ alignment: ViewAlignment) -> some View {
         Group {
-            if alignment == .left {
-                HStack {
-                    self
-                    Spacer()
-                }
+            if alignment == .leading {
+                frame(maxWidth: .infinity, alignment: .leading)
             }
-            
+
             if alignment == .centerX {
-                HStack {
-                    Spacer()
-                    self
-                    Spacer()
-                }
+                frame(maxWidth: .infinity, alignment: .center)
             }
-            
-            if alignment == .right {
-                HStack {
-                    Spacer()
-                    self
-                }
+
+            if alignment == .trailing {
+                frame(maxWidth: .infinity, alignment: .trailing)
             }
-            
+        
             if alignment == .top {
-                VStack {
-                    self
-                    Spacer()
-                }
+                frame(maxHeight: .infinity, alignment: .top)
             }
-            
+
             if alignment == .centerY {
-                VStack {
-                    Spacer()
-                    self
-                    Spacer()
-                }
+                frame(maxHeight: .infinity, alignment: .center)
             }
             
             if alignment == .bottom {
-                VStack {
-                    Spacer()
-                    self
-                }
+                frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
     }
 }
+
 
 struct AlignDemoView: View {
 
@@ -71,21 +52,22 @@ struct AlignDemoView: View {
     }
 }
 
+
 struct AlignDemoView_Previews: PreviewProvider {
 
-    private static var alignments: [(String, ViewAlignment)] = [
-        ("Left", .left),
-        ("CenterX", .centerX),
-        ("Right", .right),
-        ("Top", .top),
-        ("CenterY", .centerY),
-        ("Bottom", .bottom),
+    private static var alignments: [(name: String, alignment: ViewAlignment)] = [
+        (name: "Leading", alignment: .leading),
+        (name: "CenterX", alignment: .centerX),
+        (name: "Trailing", alignment: .trailing),
+        (name: "Top", alignment: .top),
+        (name: "CenterY", alignment: .centerY),
+        (name: "Bottom", alignment: .bottom),
     ]
 
     static var previews: some View {
-        ForEach(alignments, id: \.0) {
-            AlignDemoView(alignment: $0.1)
-                .previewDisplayName($0.0)
+        ForEach(alignments, id: \.name) {
+            AlignDemoView(alignment: $0.alignment)
+                .previewDisplayName($0.name)
         }
     }
 }
