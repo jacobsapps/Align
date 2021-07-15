@@ -26,3 +26,7 @@ Check out `Sources/Align/Align.swift` for the source code and to see SwiftUI pre
 My recommendation would be to just copy the source code directly into own project to avoid littering your code with `import Align`. If you do, I'd really appreciate a star on Github!  
 
 Pull requests and constructive criticism welcome.
+
+Contributors: 
+- Jacob Bartlett (original author)
+- u/lyinsteve who suggested an improvement to the alignment implementation
